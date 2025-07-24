@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+        .result-card h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .score {
+            font-size: 4rem;
+            color: #00ffae;
+            margin: 20px 0;
+        }
+        .total {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #00ffae;
+            color: #000;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #00d49a;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-card">
+        <h1>🎉 Quiz Completed!</h1>
+        <div class="score">{{ score }}/{{ total }}</div>
+        <div class="total">
+            {% if score == total %}
+                Perfect Score! You're a genius 🧠
+            {% elif score >= total|add:-1 %}
+                Almost there! Great job 😎
+            {% elif score >= total|add:-2 %}
+                Not bad! You’re getting there 💪
+            {% else %}
+                Keep practicing! 🚀
+            {% endif %}
+        </div>
+        <a href="{% url 'start_quiz' %}" class="btn">Try Again</a>
+    </div>
+</body>
+</html>

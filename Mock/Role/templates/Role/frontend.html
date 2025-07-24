@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontend Developer - PathHire</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #ff5733;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #ffefe6;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            color: #ff5733;
+        }
+
+        .back {
+            margin-top: 30px;
+            display: inline-block;
+            color: #777;
+            text-decoration: underline;
+        }
+
+        .back:hover {
+            color: #ff5733;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frontend Developer 🎨</h1>
+        <p>Build stunning interfaces and responsive websites. Here's your starter pack:</p>
+        <a class="button" href="/aptitude/">Aptitude</a>
+
+
+        <ul>
+            <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters - Full Stack Path</a></li>
+            <li><a href="https://www.w3schools.com/html/" target="_blank">HTML & CSS Basics – W3Schools</a></li>
+            <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a></li>
+            <li><a href="https://reactjs.org/learn" target="_blank">React Official Tutorial</a></li>
+            <li><a href="https://frontendmentor.io" target="_blank">Frontend Mentor – Real-world Challenges</a></li>
+        </ul>
+
+        <a class="back" href="{% url 'role_selection' %}">← Back to Role Selection</a>
+    </div>
+</body>
+</html>
