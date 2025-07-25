@@ -73,7 +73,6 @@
       text-decoration: underline;
       color: var(--primary-hover);
     }
-
     .quiz-container {
       background: rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
@@ -94,9 +93,7 @@
     }
     .question { margin-bottom: 30px; }
     .question p {
-      font-weight: 600;
-      color: #f1f5f9;
-      margin-bottom: 10px;
+      font-weight: 600; color: #f1f5f9; margin-bottom: 10px;
     }
     .options label {
       display: block;
@@ -140,30 +137,89 @@
 
   <header>
     <h1>{{ role.name }} Roadmap</h1>
-    <p>Your journey into servers, APIs, and databases begins here!</p>
+    <p>
+      {% if role.name == "Backend Developer" %}
+         Your journey into servers, APIs, and databases begins here!
+      {% elif role.name == "Frontend Developer" %}
+         Build stunning interfaces and responsive websites.
+      {% elif role.name == "Data Scientist" %}
+         Decode data, train models, and predict the future.
+      {% else %}
+         Start your specialist journey here!
+      {% endif %}
+    </p>
   </header>
 
   <div class="container">
     <h2>🛠 Skills You Should Know</h2>
     <ul>
-      <li>Core Programming (Python, Java, Node.js, Go)</li>
-      <li>Understanding of APIs (REST, GraphQL)</li>
-      <li>Database Management (MySQL, PostgreSQL, MongoDB)</li>
-      <li>Authentication (JWT, OAuth)</li>
-      <li>Docker & Deployment Basics</li>
-      <li>Problem-Solving & DSA</li>
+      {% if role.name == "Backend Developer" %}
+        <li>Core Programming (Python, Java, Node.js, Go)</li>
+        <li>Understanding of APIs (REST, GraphQL)</li>
+        <li>Database Management (MySQL, PostgreSQL, MongoDB)</li>
+        <li>Authentication (JWT, OAuth)</li>
+        <li>Docker &amp; Deployment Basics</li>
+        <li>Problem-Solving &amp; DSA</li>
+      {% elif role.name == "Frontend Developer" %}
+        <li>HTML, CSS, JavaScript (React, Angular, Vue)</li>
+        <li>Responsive Web Design</li>
+        <li>REST APIs, AJAX &amp; JSON</li>
+        <li>Browser Developer Tools</li>
+        <li>Performance Optimization</li>
+        <li>Problem-Solving &amp; DSA</li>
+      {% elif role.name == "Aptitude" %}
+        <li>Numerical Reasoning</li>
+        <li>Logical Thinking</li>
+        <li>Analytical Skills</li>
+        <li>Quick Calculations</li>
+        <li>Puzzle Solving</li>
+      {% elif role.name == "Data Scientist" %}
+        <li>Python, Pandas, NumPy</li>
+        <li>Machine Learning &amp; Statistics</li>
+        <li>SQL &amp; Data Visualization</li>
+        <li>Scikit-learn</li>
+        <li>Data Wrangling</li>
+      {% elif role.name == "Cloud Engineer" %}
+        <li>AWS, Azure, GCP skills</li>
+        <li>DevOps tools &amp; IAC (Terraform, CloudFormation)</li>
+        <li>Cloud Security</li>
+        <li>Monitoring &amp; Logging</li>
+      {% else %}
+        <li>General Problem-Solving</li>
+      {% endif %}
     </ul>
-
-    <a class="button" href="/aptitude/">Start Aptitude Round</a>
 
     <div class="resources">
       <h2>📚 Recommended Resources</h2>
       <ul>
-        <li><a href="https://roadmap.sh/backend" target="_blank" rel="noopener noreferrer">Backend Developer Roadmap</a></li>
-        <li><a href="https://www.youtube.com/watch?v=ldYcgPKEZC8" target="_blank" rel="noopener noreferrer">FreeCodeCamp Backend Full Course (Python)</a></li>
-        <li><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" target="_blank" rel="noopener noreferrer">DSA for Backend Interviews – GeeksForGeeks</a></li>
-        <li><a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Learn Docker Basics</a></li>
-        <li><a href="https://www.mongodb.com/docs/manual/" target="_blank" rel="noopener noreferrer">MongoDB Docs</a></li>
+        {% if role.name == "Backend Developer" %}
+          <li><a href="https://roadmap.sh/backend" target="_blank">Backend Developer Roadmap</a></li>
+          <li><a href="https://www.youtube.com/watch?v=ldYcgPKEZC8" target="_blank">FreeCodeCamp Backend Full Course (Python)</a></li>
+          <li><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" target="_blank">DSA for Backend Interviews – GeeksForGeeks</a></li>
+          <li><a href="https://hub.docker.com/" target="_blank">Learn Docker Basics</a></li>
+          <li><a href="https://www.mongodb.com/docs/manual/" target="_blank">MongoDB Docs</a></li>
+        {% elif role.name == "Frontend Developer" %}
+          <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters - Full Stack Path</a></li>
+          <li><a href="https://www.w3schools.com/html/" target="_blank">HTML &amp; CSS Basics – W3Schools</a></li>
+          <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a></li>
+          <li><a href="https://reactjs.org/learn" target="_blank">React Official Tutorial</a></li>
+          <li><a href="https://frontendmentor.io" target="_blank">Frontend Mentor – Real-world Challenges</a></li>
+        {% elif role.name == "Aptitude" %}
+          <li><a href="https://www.indiabix.com/aptitude/questions-and-answers/" target="_blank">IndiaBix Aptitude Questions</a></li>
+          <li><a href="https://www.tutorialspoint.com/aptitude/index.htm" target="_blank">TutorialsPoint Aptitude Guide</a></li>
+          <li><a href="https://www.youtube.com/watch?v=VYcW9E4z7pk" target="_blank">YouTube: RS Aggarwal Arithmetic</a></li>
+          <li><a href="https://www.geeksforgeeks.org/aptitude/" target="_blank">GeeksforGeeks Aptitude Practice</a></li>
+        {% elif role.name == "Data Scientist" %}
+          <li><a href="https://www.kaggle.com/learn" target="_blank">Kaggle Courses</a></li>
+          <li><a href="https://www.datacamp.com/" target="_blank">DataCamp</a></li>
+          <li><a href="https://cs109.github.io/2015/" target="_blank">Harvard CS109 - Data Science</a></li>
+          <li><a href="https://www.freecodecamp.org/learn" target="_blank">FreeCodeCamp</a></li>
+        {% elif role.name == "Cloud Engineer" %}
+          <li><a href="https://aws.amazon.com/training/" target="_blank">AWS Training</a></li>
+          <li><a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-azure/" target="_blank">Azure Learning</a></li>
+          <li><a href="https://cloud.google.com/training" target="_blank">GCP Training</a></li>
+          <li><a href="https://roadmap.sh/devops" target="_blank">DevOps Roadmap</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

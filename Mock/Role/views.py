@@ -15,7 +15,8 @@ def start_quiz(request):
         })
     role = get_object_or_404(Role, id=role_id)
     questions = Question.objects.filter(role=role).prefetch_related('options')
-    return render(request, 'Role/backend.html', {  # <-- Combined template, change to your universal template!
+    # Use a generic combined template for all roles' quizzes
+    return render(request, 'Role/role_with_quiz.html', {
         'role': role,
         'questions': questions,
     })
@@ -28,9 +29,10 @@ def submit_quiz(request):
             if key.startswith('q'):
                 total_questions += 1
                 selected_option_ids = request.POST.getlist(key)
-                question_id = key[1:]
+                question_id = key[1:]  # remove 'q' prefix
                 correct_option_ids = list(
-                    Option.objects.filter(question_id=question_id, is_correct=True).values_list('id', flat=True)
+                    Option.objects.filter(question_id=question_id, is_correct=True)
+                    .values_list('id', flat=True)
                 )
                 selected_option_ids_int = list(map(int, selected_option_ids))
                 if set(selected_option_ids_int) == set(correct_option_ids):
@@ -39,10 +41,10 @@ def submit_quiz(request):
             'score': score,
             'total': total_questions,
         })
+    # For non-POST request fallback
     roles = Role.objects.all()
     return render(request, 'Role/role_selection.html', {'roles': roles})
 
-# Helper to avoid code duplication for role-based pages
 def _get_role_and_questions(role_name):
     role = get_object_or_404(Role, name=role_name)
     questions = Question.objects.filter(role=role).prefetch_related('options')
@@ -68,7 +70,6 @@ def aptitude_view(request):
         'role': role,
         'questions': questions,
     })
-
 
 def data_scientist_view(request):
     role, questions = _get_role_and_questions("Data Scientist")

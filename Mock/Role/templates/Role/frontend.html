@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Frontend Developer - PathHire</title>
+  <meta charset="UTF-8" />
+  <title>{{ role.name }} - PathHire</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -111,17 +111,17 @@
 </head>
 <body>
   <div class="container">
-    <h1>Frontend Developer 🎨</h1>
+    <h1>{{ role.name }} 🎨</h1>
     <p>Build stunning interfaces and responsive websites. Here's your starter pack:</p>
 
-    <a class="button" href="/aptitude/">Take Aptitude Test</a>
+    <a class="button" href="{% url 'aptitude' %}">Take Aptitude Test</a>
 
     <ul>
-      <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters - Full Stack Path</a></li>
-      <li><a href="https://www.w3schools.com/html/" target="_blank">HTML & CSS Basics – W3Schools</a></li>
-      <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a></li>
-      <li><a href="https://reactjs.org/learn" target="_blank">React Official Tutorial</a></li>
-      <li><a href="https://frontendmentor.io" target="_blank">Frontend Mentor – Real-world Challenges</a></li>
+      <li><a href="https://frontendmasters.com" target="_blank" rel="noopener noreferrer">Frontend Masters - Full Stack Path</a></li>
+      <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">HTML & CSS Basics – W3Schools</a></li>
+      <li><a href="https://javascript.info/" target="_blank" rel="noopener noreferrer">The Modern JavaScript Tutorial</a></li>
+      <li><a href="https://reactjs.org/learn" target="_blank" rel="noopener noreferrer">React Official Tutorial</a></li>
+      <li><a href="https://frontendmentor.io" target="_blank" rel="noopener noreferrer">Frontend Mentor – Real-world Challenges</a></li>
     </ul>
 
     <a class="back" href="{% url 'role_selection' %}">← Back to Role Selection</a>

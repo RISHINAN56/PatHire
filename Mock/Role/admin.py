@@ -3,19 +3,18 @@ from .models import Role, Question, Option
 
 class OptionInline(admin.TabularInline):
     model = Option
-    extra = 4  # Number of blank option forms by default
+    extra = 4  # Default number of empty option forms displayed
     min_num = 1  # Require at least one option per question
     verbose_name = "Answer Option"
     verbose_name_plural = "Answer Options"
-    # Optional: you can add show_change_link=True if you want inline option links
+    # Optional: show_change_link=True can be added to enable direct links to option editing
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [OptionInline]
     list_display = ('text', 'role')
     search_fields = ('text', 'role__name')
-    list_filter = ('role',)  # Add filter sidebar by role
+    list_filter = ('role',)
     ordering = ('role', 'text')
-    # Optional: add readonly_fields, prepopulated_fields, etc. if you have slug or other fields
 
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -24,3 +23,5 @@ class RoleAdmin(admin.ModelAdmin):
 
 admin.site.register(Role, RoleAdmin)
 admin.site.register(Question, QuestionAdmin)
+# Optionally, register Option as standalone if you want direct admin access:
+# admin.site.register(Option)

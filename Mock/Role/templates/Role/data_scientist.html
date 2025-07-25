@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Data Scientist Path – PathHire</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>{{ role.name }} Path – PathHire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary: #f97316;
@@ -26,6 +26,7 @@
       background: linear-gradient(135deg, var(--bg-dark), var(--card-dark));
       font-family: 'Inter', sans-serif;
       color: var(--text);
+      padding: 0 20px 40px;
     }
 
     .container {
@@ -117,12 +118,84 @@
       font-weight: 500;
       cursor: pointer;
       text-decoration: none;
+      text-align: center;
       transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn:hover {
       background-color: var(--primary-hover);
       box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+    }
+
+    /* Quiz container styles */
+    .quiz-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      max-width: 900px;
+      width: 100%;
+      padding: 40px;
+      animation: fadeIn 0.8s ease-in-out;
+      color: var(--text);
+      margin: 40px auto 0;
+    }
+
+    .quiz-container h2 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 30px;
+    }
+
+    .question p {
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+    }
+
+    .options label {
+      display: block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .options label:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .options input[type="checkbox"],
+    .options input[type="radio"] {
+      margin-right: 10px;
+      transform: scale(1.1);
+    }
+
+    button.submit-btn {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    button.submit-btn:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 8px 28px rgba(249, 115, 22, 0.6);
     }
 
     @media (max-width: 600px) {
@@ -139,14 +212,15 @@
   </style>
 </head>
 <body>
+
   <div class="container">
-    <h1>Data Scientist Path</h1>
+    <h1>{{ role.name }} Path</h1>
     <p class="description">Decode data, train models, and predict the future. Your journey to data wizardry begins here.</p>
 
     <div class="section-title">🔧 Skills to Master</div>
     <div class="skills">
       <div class="skill-badge">Python</div>
-      <div class="skill-badge">Pandas & NumPy</div>
+      <div class="skill-badge">Pandas &amp; NumPy</div>
       <div class="skill-badge">Machine Learning</div>
       <div class="skill-badge">SQL</div>
       <div class="skill-badge">Data Visualization</div>
@@ -156,16 +230,47 @@
 
     <div class="section-title">📚 Learning Resources</div>
     <div class="resources">
-      <a href="https://www.kaggle.com/learn" target="_blank">Kaggle Courses</a>
-      <a href="https://www.datacamp.com/" target="_blank">DataCamp</a>
-      <a href="https://cs109.github.io/2015/" target="_blank">Harvard CS109 - Data Science</a>
-      <a href="https://www.freecodecamp.org/learn" target="_blank">FreeCodeCamp</a>
+      <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener noreferrer">Kaggle Courses</a>
+      <a href="https://www.datacamp.com/" target="_blank" rel="noopener noreferrer">DataCamp</a>
+      <a href="https://cs109.github.io/2015/" target="_blank" rel="noopener noreferrer">Harvard CS109 - Data Science</a>
+      <a href="https://www.freecodecamp.org/learn" target="_blank" rel="noopener noreferrer">FreeCodeCamp</a>
     </div>
 
     <div class="button-group">
-      <a href="/quiz" class="btn">Take a Quiz</a>
-      <a href="/role" class="btn">Back to Roles</a>
+      <a href="{% url 'start_quiz' %}?role={{ role.id }}" class="btn">Take a Quiz</a>
+      <a href="{% url 'role_selection' %}" class="btn">Back to Roles</a>
     </div>
   </div>
+
+  {% if questions and questions.count %}
+  <div class="quiz-container">
+    <h2>📝 {{ role.name }} Quiz</h2>
+    <form method="post" action="{% url 'submit_quiz' %}">
+      {% csrf_token %}
+      {% for question in questions %}
+        <div class="question">
+          <p>{{ forloop.counter }}. {{ question.text }}</p>
+          <div class="options">
+            {% for option in question.options.all %}
+              <label>
+                <input type="checkbox" name="q{{ question.id }}" value="{{ option.id }}">
+                {{ option.text }}
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+      <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+  </div>
+  {% else %}
+  <div class="quiz-container">
+    <h2>📝 {{ role.name }} Quiz</h2>
+    <p style="text-align:center; color: var(--primary); font-weight: 600; margin-top: 30px;">
+      No quiz questions available for this role right now. Check back later or explore the roadmap above!
+    </p>
+  </div>
+  {% endif %}
+
 </body>
 </html>
