@@ -1,147 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>PathHire Quiz - Aptitude Round</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f6f9fc, #dbefff);
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
+  <meta charset="UTF-8" />
+  <title>PathHire Quiz - Aptitude Round</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-        .quiz-container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.8s ease-in-out;
-        }
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
 
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
+    .quiz-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      max-width: 800px;
+      width: 100%;
+      padding: 40px;
+      animation: fadeInUp 0.8s ease-in-out;
+    }
 
-        .question {
-            margin: 20px 0;
-        }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 30px;
+    }
 
-        .question p {
-            font-weight: 600;
-        }
+    .question {
+      margin-bottom: 30px;
+    }
 
-        .options label {
-            display: block;
-            margin-bottom: 8px;
-            padding: 10px;
-            border-radius: 10px;
-            background: #f0f4f8;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .question p {
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+    }
 
-        .options input[type="radio"] {
-            margin-right: 10px;
-        }
+    .options label {
+      display: block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-        .options label:hover {
-            background-color: #d6eaff;
-        }
+    .options label:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-        button {
-            margin-top: 30px;
-            padding: 12px 20px;
-            background-color: #0077ff;
-            border: none;
-            color: white;
-            border-radius: 12px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.4s ease;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .options input[type="radio"] {
+      margin-right: 10px;
+      transform: scale(1.1);
+    }
 
-        button:hover {
-            background-color: #005bcc;
-        }
+    button {
+      background-color: #facc15;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 6px 20px rgba(250, 204, 21, 0.4);
+      transition: all 0.3s ease;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    </style>
+    button:hover {
+      background-color: #fde047;
+      box-shadow: 0 8px 28px rgba(250, 204, 21, 0.6);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quiz-container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>🧠 Aptitude Quiz</h1>
-        <form method="post" action="/submit-quiz/">
-            {% csrf_token %}
-            
-            <div class="question">
-                <p>1. What is the next number in the sequence: 2, 4, 8, 16, ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="32">32</label>
-                    <label><input type="radio" name="q1" value="24">24</label>
-                    <label><input type="radio" name="q1" value="20">20</label>
-                    <label><input type="radio" name="q1" value="18">18</label>
-                </div>
-            </div>
+  <div class="quiz-container">
+    <h1>🧠 Aptitude Quiz</h1>
+    <form method="post" action="/submit-quiz/">
+      {% csrf_token %}
 
-            <div class="question">
-                <p>2. If A = 1, B = 2, ..., what is the sum of C + A + T?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="24">24</label>
-                    <label><input type="radio" name="q2" value="20">20</label>
-                    <label><input type="radio" name="q2" value="23">23</label>
-                    <label><input type="radio" name="q2" value="25">25</label>
-                </div>
-            </div>
+      <div class="question">
+        <p>1. What is the next number in the sequence: 2, 4, 8, 16, ?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="32">32</label>
+          <label><input type="radio" name="q1" value="24">24</label>
+          <label><input type="radio" name="q1" value="20">20</label>
+          <label><input type="radio" name="q1" value="18">18</label>
+        </div>
+      </div>
 
-            <div class="question">
-                <p>3. A train 100 meters long is moving at 60 km/h. How long will it take to cross a platform 100 meters long?</p>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="12s">12 seconds</label>
-                    <label><input type="radio" name="q3" value="10s">10 seconds</label>
-                    <label><input type="radio" name="q3" value="6s">6 seconds</label>
-                    <label><input type="radio" name="q3" value="8s">8 seconds</label>
-                </div>
-            </div>
+      <div class="question">
+        <p>2. If A = 1, B = 2, ..., what is the sum of C + A + T?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="24">24</label>
+          <label><input type="radio" name="q2" value="20">20</label>
+          <label><input type="radio" name="q2" value="23">23</label>
+          <label><input type="radio" name="q2" value="25">25</label>
+        </div>
+      </div>
 
-            <div class="question">
-                <p>4. Which number is the odd one out: 3, 5, 7, 9, 11?</p>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="9">9</label>
-                    <label><input type="radio" name="q4" value="5">5</label>
-                    <label><input type="radio" name="q4" value="11">11</label>
-                    <label><input type="radio" name="q4" value="3">3</label>
-                </div>
-            </div>
+      <div class="question">
+        <p>3. A train 100 meters long is moving at 60 km/h. How long will it take to cross a platform 100 meters long?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="12s">12 seconds</label>
+          <label><input type="radio" name="q3" value="10s">10 seconds</label>
+          <label><input type="radio" name="q3" value="6s">6 seconds</label>
+          <label><input type="radio" name="q3" value="8s">8 seconds</label>
+        </div>
+      </div>
 
-            <div class="question">
-                <p>5. What comes next: Monday, Tuesday, Wednesday, ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q5" value="Thursday">Thursday</label>
-                    <label><input type="radio" name="q5" value="Friday">Friday</label>
-                    <label><input type="radio" name="q5" value="Saturday">Saturday</label>
-                    <label><input type="radio" name="q5" value="Sunday">Sunday</label>
-                </div>
-            </div>
+      <div class="question">
+        <p>4. Which number is the odd one out: 3, 5, 7, 9, 11?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="9">9</label>
+          <label><input type="radio" name="q4" value="5">5</label>
+          <label><input type="radio" name="q4" value="11">11</label>
+          <label><input type="radio" name="q4" value="3">3</label>
+        </div>
+      </div>
 
-            <button type="submit">Submit Quiz</button>
-        </form>
-    </div>
+      <div class="question">
+        <p>5. What comes next: Monday, Tuesday, Wednesday, ?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="Thursday">Thursday</label>
+          <label><input type="radio" name="q5" value="Friday">Friday</label>
+          <label><input type="radio" name="q5" value="Saturday">Saturday</label>
+          <label><input type="radio" name="q5" value="Sunday">Sunday</label>
+        </div>
+      </div>
+
+      <button type="submit">Submit Quiz</button>
+    </form>
+  </div>
 </body>
 </html>

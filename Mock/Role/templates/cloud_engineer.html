@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud Engineer Role | PathHire</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 720px;
+      width: 90%;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #f8fafc;
+      text-align: center;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #a5f3fc;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1.05em;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #dbeafe;
+      font-size: 1em;
+    }
+
+    ul li span {
+      font-size: 1.3em;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1em;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #0ea5e9;
+    }
+
+    .quiz-note {
+      font-size: 0.95em;
+      color: #94a3b8;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>☁️ Cloud Engineer</h1>
+
+    <div class="section">
+      <div class="section-title">Why Choose Cloud Engineering?</div>
+      <p>Cloud Engineers build the backbone of modern apps. From deploying scalable systems on AWS to securing cloud infrastructure, they ensure businesses stay online and agile. If you enjoy automating things and playing with tech like Docker, Kubernetes, or Terraform — this is your zone.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Skills You'll Need</div>
+      <ul>
+        <li><span>☁️</span> Experience with AWS, Azure, or GCP</li>
+        <li><span>🛡️</span> Strong grasp of networking & cloud security</li>
+        <li><span>⚙️</span> CI/CD pipelines (GitHub Actions, Jenkins)</li>
+        <li><span>📦</span> Infrastructure as Code (Terraform / CloudFormation)</li>
+        <li><span>🔍</span> Monitoring (CloudWatch, Grafana, Prometheus)</li>
+        <li><span>🔐</span> Identity and Access Management (IAM)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Before You Start</div>
+      <p class="quiz-note">⚠️ This aptitude quiz checks your basics on cloud concepts, DevOps, and security. It’s short & smart — just 10 questions!</p>
+      <a href="{% url 'aptitude' %}" class="btn">Start Aptitude Quiz</a>
+    </div>
+  </div>
+</body>
+</html>

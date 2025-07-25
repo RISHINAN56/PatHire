@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            backdrop-filter: blur(14px);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .result-card h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #00ffae, #00d49a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 28px;
+            background-color: #00ffae;
+            color: #000;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #00d49a;
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-card">
+        <h1>🎯 Quiz Completed!</h1>
+        <div class="score">{{ score }}/{{ total }}</div>
+        
+        <div class="message">
+            {% if score == total %}
+                <span class="emoji">🎉</span> Perfect Score! You're a genius 🧠
+            {% elif score >= total|add:"-1" %}
+                <span class="emoji">🔥</span> Almost there! Great job 😎
+            {% elif score >= total|add:"-2" %}
+                <span class="emoji">👍</span> Not bad! You’re getting there 💪
+            {% else %}
+                <span class="emoji">📚</span> Keep practicing! You got this 🚀
+            {% endif %}
+        </div>
+
+        <a href="{% url 'start_quiz' %}" class="btn">Try Again</a>
+    </div>
+</body>
+</html>

@@ -1,81 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Frontend Developer - PathHire</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f8f8f8;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <title>Frontend Developer - PathHire</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            color: #ff5733;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    .container {
+      max-width: 850px;
+      margin: 60px auto;
+      background-color: #1e293b;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
 
-        li {
-            background: #ffefe6;
-            padding: 12px 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-            text-align: left;
-        }
+    h1 {
+      font-size: 2rem;
+      color: #f97316;
+      margin-bottom: 10px;
+    }
 
-        a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 600;
-        }
+    p {
+      color: #cbd5e1;
+      margin-bottom: 24px;
+    }
 
-        a:hover {
-            color: #ff5733;
-        }
+    .button {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 24px;
+      background-color: #f97316;
+      color: #0f172a;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
 
-        .back {
-            margin-top: 30px;
-            display: inline-block;
-            color: #777;
-            text-decoration: underline;
-        }
+    .button:hover {
+      background-color: #ea580c;
+    }
 
-        .back:hover {
-            color: #ff5733;
-        }
-    </style>
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+    }
+
+    li {
+      background-color: #334155;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: translateY(-2px);
+    }
+
+    a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #f97316;
+    }
+
+    .back {
+      display: block;
+      margin-top: 40px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .back:hover {
+      color: #f97316;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Frontend Developer 🎨</h1>
-        <p>Build stunning interfaces and responsive websites. Here's your starter pack:</p>
-        <a class="button" href="/aptitude/">Aptitude</a>
+  <div class="container">
+    <h1>Frontend Developer 🎨</h1>
+    <p>Build stunning interfaces and responsive websites. Here's your starter pack:</p>
 
+    <a class="button" href="/aptitude/">Take Aptitude Test</a>
 
-        <ul>
-            <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters - Full Stack Path</a></li>
-            <li><a href="https://www.w3schools.com/html/" target="_blank">HTML & CSS Basics – W3Schools</a></li>
-            <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a></li>
-            <li><a href="https://reactjs.org/learn" target="_blank">React Official Tutorial</a></li>
-            <li><a href="https://frontendmentor.io" target="_blank">Frontend Mentor – Real-world Challenges</a></li>
-        </ul>
+    <ul>
+      <li><a href="https://frontendmasters.com" target="_blank">Frontend Masters - Full Stack Path</a></li>
+      <li><a href="https://www.w3schools.com/html/" target="_blank">HTML & CSS Basics – W3Schools</a></li>
+      <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a></li>
+      <li><a href="https://reactjs.org/learn" target="_blank">React Official Tutorial</a></li>
+      <li><a href="https://frontendmentor.io" target="_blank">Frontend Mentor – Real-world Challenges</a></li>
+    </ul>
 
-        <a class="back" href="{% url 'role_selection' %}">← Back to Role Selection</a>
-    </div>
+    <a class="back" href="{% url 'role_selection' %}">← Back to Role Selection</a>
+  </div>
 </body>
 </html>

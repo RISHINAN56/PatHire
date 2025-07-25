@@ -1,109 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>PathHire - Choose Your Role</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <title>PathHire - Choose Your Role</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            animation: fadeIn 1s ease-in-out;
-        }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.85;
+      animation: fadeIn 1.5s ease-in-out;
+    }
 
-        .roles {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
 
-        .role {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 20px 30px;
-            border-radius: 15px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 1rem;
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            animation: floatUp 1s ease forwards;
-        }
+    .role {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 20px 40px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: #f8fafc;
+      font-weight: 500;
+      font-size: 1rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      animation: floatUp 1s ease forwards;
+    }
 
-        .role:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
+    .role:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
 
-        @keyframes floatUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .role form {
-            margin: 0;
-        }
-
-        .role button {
-            background: none;
-            border: none;
-            font: inherit;
-            color: inherit;
-            cursor: pointer;
-        }
-    </style>
+    .role form, .role button {
+      all: unset;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to PathHire 🚀</h1>
-    <p>What role are you preparing for?</p>
-    
-    <div class="roles">
-        <div class="role">
-            <form action="{% url 'frontend' %}">
-                <button type="submit">Frontend Developer</button>
-            </form>
-        </div>
+  <h1>Welcome to PathHire 🚀</h1>
+  <p>What role are you preparing for?</p>
 
-        <a class="role" href="/backend/">Backend Developer</a>
-
-        <a class="role" href="#">Data Scientist</a>
-        
-        <a class="role" href="#">Cloud Engineer</a>
+  <div class="roles">
+    <div class="role">
+      <form action="{% url 'frontend' %}">
+        <button type="submit">Frontend Developer</button>
+      </form>
     </div>
+
+    <a class="role" href="/backend/">Backend Developer</a>
+    <a class="role" href="/data_scientist/">Data Scientist</a>
+    <a class="role" href="/cloud_engineer/">Cloud Engineer</a>
+  </div>
 </body>
 </html>

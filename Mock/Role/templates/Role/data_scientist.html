@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Scientist Path – PathHire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --bg-dark: #0f172a;
+      --card-dark: #1e293b;
+      --accent: #fcd34d;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --badge: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-dark), var(--card-dark));
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: var(--card-dark);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin-top: 30px;
+      color: var(--text);
+      border-bottom: 1px solid #334155;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .skill-badge {
+      background-color: var(--badge);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .resources {
+      margin-top: 16px;
+    }
+
+    .resources a {
+      display: block;
+      color: var(--primary);
+      margin: 6px 0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .resources a:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+    }
+
+    .button-group {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Data Scientist Path</h1>
+    <p class="description">Decode data, train models, and predict the future. Your journey to data wizardry begins here.</p>
+
+    <div class="section-title">🔧 Skills to Master</div>
+    <div class="skills">
+      <div class="skill-badge">Python</div>
+      <div class="skill-badge">Pandas & NumPy</div>
+      <div class="skill-badge">Machine Learning</div>
+      <div class="skill-badge">SQL</div>
+      <div class="skill-badge">Data Visualization</div>
+      <div class="skill-badge">Statistics</div>
+      <div class="skill-badge">Scikit-learn</div>
+    </div>
+
+    <div class="section-title">📚 Learning Resources</div>
+    <div class="resources">
+      <a href="https://www.kaggle.com/learn" target="_blank">Kaggle Courses</a>
+      <a href="https://www.datacamp.com/" target="_blank">DataCamp</a>
+      <a href="https://cs109.github.io/2015/" target="_blank">Harvard CS109 - Data Science</a>
+      <a href="https://www.freecodecamp.org/learn" target="_blank">FreeCodeCamp</a>
+    </div>
+
+    <div class="button-group">
+      <a href="/quiz" class="btn">Take a Quiz</a>
+      <a href="/role" class="btn">Back to Roles</a>
+    </div>
+  </div>
+</body>
+</html>

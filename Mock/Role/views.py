@@ -13,9 +13,15 @@ def submit_quiz(request):
             'q5': 'Thursday',
         }
         for key in answers:
-            if request.POST.get(key) == answers[key]:
+            user_answer = request.POST.get(key)
+            if user_answer == answers[key]:
                 score += 1
-        return render(request, 'Role/quiz_result.html', {'score': score, 'total': len(answers)})
+
+        return render(request, 'Role/quiz_result.html', {
+            'score': score,
+            'total': len(answers)
+        })
+
     return render(request, 'quiz.html')
 
 
@@ -30,6 +36,14 @@ def backend_view(request):
 
 def aptitude_view(request):
     return render(request, 'Role/aptitude.html')
+
+def data_scientist_view(request):
+    return render(request, 'Role/data_scientist.html')
+
+def cloud_engineer(request):
+    return render(request, 'cloud_engineer.html')
+
+
 
 
 

@@ -1,93 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Backend Developer Path – PathHire</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: #1d3557;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 960px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #1d3557;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        a.button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background-color: #457b9d;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-        }
-        a.button:hover {
-            background-color: #1d3557;
-        }
-        .resources {
-            margin-top: 30px;
-        }
-        .resources ul li a {
-            color: #0077cc;
-            text-decoration: none;
-        }
-        .resources ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Backend Developer Path – PathHire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --bg-dark: #0f172a;
+      --card-dark: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --badge: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark), var(--card-dark));
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--primary);
+      padding: 28px 0;
+      text-align: center;
+      color: white;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #fff7ed;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      padding: 40px;
+      background-color: var(--card-dark);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    a.button {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      margin-bottom: 30px;
+    }
+
+    a.button:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+    }
+
+    .resources ul li a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .resources ul li a:hover {
+      text-decoration: underline;
+      color: var(--primary-hover);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+        padding: 24px;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
+  <header>
     <h1>Backend Developer Roadmap</h1>
     <p>Your journey into servers, APIs, and databases begins here!</p>
-</header>
+  </header>
 
-<div class="container">
-    <h2>Skills You Should Know:</h2>
+  <div class="container">
+    <h2>🛠 Skills You Should Know</h2>
     <ul>
-        <li>Core Programming (Python, Java, Node.js, Go)</li>
-        <li>Understanding of APIs (REST, GraphQL)</li>
-        <li>Database Management (MySQL, PostgreSQL, MongoDB)</li>
-        <li>Authentication (JWT, OAuth)</li>
-        <li>Docker & Deployment Basics</li>
-        <li>Problem-Solving & DSA</li>
+      <li>Core Programming (Python, Java, Node.js, Go)</li>
+      <li>Understanding of APIs (REST, GraphQL)</li>
+      <li>Database Management (MySQL, PostgreSQL, MongoDB)</li>
+      <li>Authentication (JWT, OAuth)</li>
+      <li>Docker & Deployment Basics</li>
+      <li>Problem-Solving & DSA</li>
     </ul>
 
-    <a class="button" href="/aptitude/">Aptitude</a>
-
+    <a class="button" href="/aptitude/">Start Aptitude Round</a>
 
     <div class="resources">
-        <h2>Recommended Resources:</h2>
-        <ul>
-            <li><a href="https://roadmap.sh/backend" target="_blank">Backend Developer Roadmap</a></li>
-            <li><a href="https://www.youtube.com/watch?v=ldYcgPKEZC8" target="_blank">FreeCodeCamp Backend Full Course (Python)</a></li>
-            <li><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" target="_blank">DSA for Backend Interviews – GeeksForGeeks</a></li>
-            <li><a href="https://hub.docker.com/" target="_blank">Learn Docker Basics</a></li>
-            <li><a href="https://www.mongodb.com/docs/manual/" target="_blank">MongoDB Docs</a></li>
-        </ul>
+      <h2>📚 Recommended Resources</h2>
+      <ul>
+        <li><a href="https://roadmap.sh/backend" target="_blank">Backend Developer Roadmap</a></li>
+        <li><a href="https://www.youtube.com/watch?v=ldYcgPKEZC8" target="_blank">FreeCodeCamp Backend Full Course (Python)</a></li>
+        <li><a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" target="_blank">DSA for Backend Interviews – GeeksForGeeks</a></li>
+        <li><a href="https://hub.docker.com/" target="_blank">Learn Docker Basics</a></li>
+        <li><a href="https://www.mongodb.com/docs/manual/" target="_blank">MongoDB Docs</a></li>
+      </ul>
     </div>
-</div>
+  </div>
 
 </body>
 </html>
