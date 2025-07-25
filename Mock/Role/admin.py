@@ -1,8 +1,14 @@
 from django.contrib import admin
-from .models import Question, Option
+from .models import Role, Question, Option
 
-admin.site.register(Question)
-admin.site.register(Option)
+class OptionInline(admin.TabularInline):
+    model = Option
+    extra = 4  # Number of options shown by default
 
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [OptionInline]
+    list_display = ('text', 'role')
+    search_fields = ('text',)
 
-# Register your models here.
+admin.site.register(Role)
+admin.site.register(Question, QuestionAdmin)
