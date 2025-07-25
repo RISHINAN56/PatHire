@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PathHire Quiz - Aptitude Round</title>
+  <title>PathHire Quiz - {{ role.name }}</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -60,6 +60,7 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
 
+    .options input[type="checkbox"],
     .options input[type="radio"] {
       margin-right: 10px;
       transform: scale(1.1);
@@ -115,59 +116,27 @@
 </head>
 <body>
   <div class="quiz-container">
-    <h1>🧠 Aptitude Quiz</h1>
-    <form method="post" action="/submit-quiz/">
+    <h1>🧠 Quiz for {{ role.name }}</h1>
+    <form method="post" action="{% url 'submit_quiz' %}">
       {% csrf_token %}
 
-      <div class="question">
-        <p>1. What is the next number in the sequence: 2, 4, 8, 16, ?</p>
-        <div class="options">
-          <label><input type="radio" name="q1" value="32">32</label>
-          <label><input type="radio" name="q1" value="24">24</label>
-          <label><input type="radio" name="q1" value="20">20</label>
-          <label><input type="radio" name="q1" value="18">18</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>2. If A = 1, B = 2, ..., what is the sum of C + A + T?</p>
-        <div class="options">
-          <label><input type="radio" name="q2" value="24">24</label>
-          <label><input type="radio" name="q2" value="20">20</label>
-          <label><input type="radio" name="q2" value="23">23</label>
-          <label><input type="radio" name="q2" value="25">25</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>3. A train 100 meters long is moving at 60 km/h. How long will it take to cross a platform 100 meters long?</p>
-        <div class="options">
-          <label><input type="radio" name="q3" value="12s">12 seconds</label>
-          <label><input type="radio" name="q3" value="10s">10 seconds</label>
-          <label><input type="radio" name="q3" value="6s">6 seconds</label>
-          <label><input type="radio" name="q3" value="8s">8 seconds</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>4. Which number is the odd one out: 3, 5, 7, 9, 11?</p>
-        <div class="options">
-          <label><input type="radio" name="q4" value="9">9</label>
-          <label><input type="radio" name="q4" value="5">5</label>
-          <label><input type="radio" name="q4" value="11">11</label>
-          <label><input type="radio" name="q4" value="3">3</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <p>5. What comes next: Monday, Tuesday, Wednesday, ?</p>
-        <div class="options">
-          <label><input type="radio" name="q5" value="Thursday">Thursday</label>
-          <label><input type="radio" name="q5" value="Friday">Friday</label>
-          <label><input type="radio" name="q5" value="Saturday">Saturday</label>
-          <label><input type="radio" name="q5" value="Sunday">Sunday</label>
-        </div>
-      </div>
+      {% if questions %}
+        {% for question in questions %}
+          <div class="question">
+            <p>{{ forloop.counter }}. {{ question.text }}</p>
+            <div class="options">
+              {% for option in question.options.all %}
+                <label>
+                  <input type="checkbox" name="q{{ question.id }}" value="{{ option.id }}">
+                  {{ option.text }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No questions available for this role.</p>
+      {% endif %}
 
       <button type="submit">Submit Quiz</button>
     </form>
