@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Backend Developer Path – PathHire</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>{{ role.name }} Path – PathHire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary: #f97316;
@@ -14,68 +14,40 @@
       --muted: #94a3b8;
       --badge: #334155;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, var(--bg-dark), var(--card-dark));
       color: var(--text);
+      padding: 0 20px 40px;
     }
-
     header {
       background-color: var(--primary);
       padding: 28px 0;
       text-align: center;
       color: white;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+      border-radius: 0 0 12px 12px;
     }
-
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 6px;
-    }
-
-    header p {
-      font-size: 1rem;
-      color: #fff7ed;
-    }
-
+    header h1 { font-size: 2rem; margin-bottom: 6px; }
+    header p { font-size: 1rem; color: #fff7ed; }
     .container {
       max-width: 850px;
-      margin: 50px auto;
+      margin: 0 auto 50px;
       padding: 40px;
       background-color: var(--card-dark);
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       animation: fadeIn 0.6s ease;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    h2 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 16px;
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-bottom: 32px;
-      line-height: 1.8;
-    }
-
-    ul li {
-      margin-bottom: 8px;
-    }
-
+    h2 { font-size: 1.3rem; color: var(--primary); margin-bottom: 16px; }
+    ul { margin-left: 20px; margin-bottom: 32px; line-height: 1.8; }
+    ul li { margin-bottom: 8px; }
     a.button {
       display: inline-block;
       background-color: var(--primary);
@@ -87,40 +59,87 @@
       transition: all 0.25s ease;
       margin-bottom: 30px;
     }
-
     a.button:hover {
       background-color: var(--primary-hover);
-      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+      box-shadow: 0 6px 18px rgba(249,115,22,0.3);
     }
-
     .resources ul li a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s ease;
     }
-
     .resources ul li a:hover {
       text-decoration: underline;
       color: var(--primary-hover);
     }
 
+    .quiz-container {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      max-width: 850px;
+      width: 100%;
+      padding: 40px;
+      animation: fadeIn 0.8s ease-in-out;
+      color: var(--text);
+      margin: 0 auto 50px;
+    }
+    .quiz-container h2 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .question { margin-bottom: 30px; }
+    .question p {
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .options label:hover { background-color: rgba(255,255,255,0.2); }
+    .options input[type="checkbox"], .options input[type="radio"] {
+      margin-right: 10px;
+      transform: scale(1.1);
+    }
+    button.submit-btn {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+      box-shadow: 0 6px 20px rgba(249,115,22,0.4);
+      transition: all 0.3s ease;
+    }
+    button.submit-btn:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 8px 28px rgba(249,115,22,0.6);
+    }
     @media (max-width: 768px) {
-      .container {
-        margin: 20px;
-        padding: 24px;
-      }
-
-      header h1 {
-        font-size: 1.5rem;
-      }
+      .container, .quiz-container { padding: 24px; margin: 20px; }
+      header h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Backend Developer Roadmap</h1>
+    <h1>{{ role.name }} Roadmap</h1>
     <p>Your journey into servers, APIs, and databases begins here!</p>
   </header>
 
@@ -147,6 +166,33 @@
         <li><a href="https://www.mongodb.com/docs/manual/" target="_blank">MongoDB Docs</a></li>
       </ul>
     </div>
+  </div>
+
+  <div class="quiz-container">
+    <h2>📝 {{ role.name }} Quiz</h2>
+    {% if questions and questions.count %}
+      <form method="post" action="{% url 'submit_quiz' %}">
+        {% csrf_token %}
+        {% for question in questions %}
+          <div class="question">
+            <p>{{ forloop.counter }}. {{ question.text }}</p>
+            <div class="options">
+              {% for option in question.options.all %}
+                <label>
+                  <input type="checkbox" name="q{{ question.id }}" value="{{ option.id }}">
+                  {{ option.text }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+        <button type="submit" class="submit-btn">Submit Quiz</button>
+      </form>
+    {% else %}
+      <p style="text-align:center; color: var(--primary); font-weight: 600; margin-top: 30px;">
+        No quiz questions available for this role right now. Check back later or explore the roadmap above!
+      </p>
+    {% endif %}
   </div>
 
 </body>

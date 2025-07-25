@@ -12,4 +12,7 @@ urlpatterns = [
     path('backend/', views.backend_view, name='backend'),
     path('data_scientist/', views.data_scientist_view, name='data_scientist'),
     path('cloud_engineer/', views.cloud_engineer, name='cloud_engineer'),
+
+    path('aptitude/', views.aptitude_view, name='aptitude'),
+
 ]
